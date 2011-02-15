@@ -1,13 +1,13 @@
 from zope import component
 from Products.ATContentTypes.interfaces import IATContentType
 from Products.Archetypes import event
-from raptus.subContentWidget.widgets import subContentWidget
+from raptus.subcontentwidget.widget import SubContentWidget
 
 
 
 def callWidgetHandler(obj, event, method):
     for widget in obj.Schema().widgets().values():
-        if isinstance(widget, subContentWidget):
+        if isinstance(widget, SubContentWidget):
             getattr(widget, method)(obj, event)
 
 

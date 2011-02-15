@@ -3,7 +3,7 @@ import os
 
 version = '1.0'
 
-setup(name='raptus.subContentWidget',
+setup(name='raptus.subcontentwidget',
       version=version,
       description='Archetypes widget for auto generate sub ContentTypes',
       long_description=open("README.txt").read() + "\n" +
@@ -19,7 +19,7 @@ setup(name='raptus.subContentWidget',
       keywords='plone archetypes widget subcontent',
       author='sriolo',
       author_email='sriolo@raptus.com',
-      url='http://svn.plone.org/svn/collective/raptus.subContentWidget',
+      url='http://svn.plone.org/svn/collective/raptus.subcontentwidget',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['raptus'],

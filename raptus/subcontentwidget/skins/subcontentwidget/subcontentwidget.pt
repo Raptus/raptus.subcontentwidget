@@ -2,7 +2,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="raptus.subContentWidget">
+      i18n:domain="raptus.subcontentwidget">
 
     <!-- SubContentWidgets -->
     <metal:view_macro define-macro="view">
@@ -18,14 +18,17 @@
               <tr >
                 <th tal:repeat="title field/widget/titles"
                     tal:content="title"/>
-              </tr>
+                <th/>
+               </tr>
             </thead>
             
             <tbody>
               <tr tal:repeat="row field/widget/fields">
                 <td tal:repeat="cell row">
                     <tal:macro tal:condition="not:repeat/cell/end">
-                        <metal:fieldMacro  use-macro="python:context.widget(cell.getName(), field=cell, mode='edit')" />
+                        <metal:fieldMacro  use-macro="python:context.widget(cell.getName(), field=cell, mode='edit')" >
+                                  <span metal:define-slot="widget_body"></span>
+      <span metal:define-slot="widget_body_label_prefix"></span></metal:fieldMacro>
                      </tal:macro>
                      <span tal:condition="repeat/cell/end">
                          <a href="#">edit</a>
@@ -43,7 +46,7 @@
     </metal:define>
 
     <div metal:define-macro="search">
-      <div metal:use-macro="context/subContentWidget/macros/edit">
+      <div metal:use-macro="context/subcontentwidget/macros/edit">
       </div>
     </div>
 

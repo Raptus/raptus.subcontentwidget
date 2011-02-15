@@ -59,7 +59,7 @@ class Handler(object):
         return self.temp_data
 
 
-class subContentWidget(TypesWidget):
+class SubContentWidget(TypesWidget):
     edited_handler = Handler()
     _properties = TypesWidget._properties.copy()
     _properties.update({
@@ -67,13 +67,13 @@ class subContentWidget(TypesWidget):
         'sub_content_class' : None,
         'edited_handler' : edited_handler,
         'initialized_handler' : edited_handler,
-        'macro' : 'subContentWidget',
+        'macro' : 'subcontentwidget',
         })
     
     security = ClassSecurityInfo()
     
     def __init__(self, *arg, **kw):
-        super(subContentWidget, self).__init__(*arg, **kw)
+        super(SubContentWidget, self).__init__(*arg, **kw)
         assert self.sub_content_class, 'missing sub_content_class on widget'
         assert self.sub_fields, 'missing sub_fields on widget'
     
