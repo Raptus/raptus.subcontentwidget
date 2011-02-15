@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="raptus.subContentWidget">
+
+    <!-- SubContentWidgets -->
+    <metal:view_macro define-macro="view">
+
+    </metal:view_macro>
+
+    <metal:define define-macro="edit">
+      <metal:use use-macro="field_macro | context/widgets/field/macros/edit">
+        <tal:fill metal:fill-slot="widget_body">
+        
+          <table>
+            <thead>
+              <tr >
+                <th tal:repeat="title field/widget/titles"
+                    tal:content="title"/>
+              </tr>
+            </thead>
+            
+            <tbody>
+              <tr tal:repeat="row field/widget/fields">
+                <td tal:repeat="cell row">
+                    <tal:macro tal:condition="not:repeat/cell/end">
+                        <metal:fieldMacro  use-macro="python:context.widget(cell.getName(), field=cell, mode='edit')" />
+                     </tal:macro>
+                     <span tal:condition="repeat/cell/end">
+                         <a href="#">edit</a>
+                         <input type="hidden"
+                                tal:attributes="name cell/name;
+                                                value cell/value"/>
+                     </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        <!--
+        
+                          
+         <p tal:content="python:str(field.widget.testField.widget)"/>
+         <metal:fieldMacro use-macro="python:context.widget(field.widget.testField.getName(), field=field.widget.testField, mode='edit')" />
+        -->
+        </tal:fill>
+      </metal:use>
+    </metal:define>
+
+    <div metal:define-macro="search">
+      <div metal:use-macro="context/subContentWidget/macros/edit">
+      </div>
+    </div>
+
+</html>
