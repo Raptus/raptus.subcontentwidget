@@ -38,12 +38,6 @@
             </tbody>
           </table>
 
-        <!--
-        
-                          
-         <p tal:content="python:str(field.widget.testField.widget)"/>
-         <metal:fieldMacro use-macro="python:context.widget(field.widget.testField.getName(), field=field.widget.testField, mode='edit')" />
-        -->
         </tal:fill>
       </metal:use>
     </metal:define>
