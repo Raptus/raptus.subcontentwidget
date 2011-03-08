@@ -24,8 +24,7 @@
       name="subcontentwidget"
       recursive="True"/>
       
-  <subscriber handler=".handler.initializedHandler" />
-  <subscriber handler=".handler.editedHandler" />
+
   
   
 </configure>
